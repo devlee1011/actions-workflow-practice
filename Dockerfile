@@ -5,7 +5,8 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # JAR 파일 복사
-COPY build/libs/myapp.jar app.jar
+ARG JAR_FILE=build/libs/*.jar
+COPY build/libs/${JAR_FILE} app.jar
 
 # 실행 명령
 ENTRYPOINT ["java", "-jar", "app.jar"]
